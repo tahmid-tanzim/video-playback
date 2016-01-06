@@ -1,0 +1,30 @@
+{
+  "name": "video-playback",
+  "version": "0.0.1",
+  "description": "HTML5 Video Playback with AngularJS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tahmid-tanzim/video-playback.git"
+  },
+  "keywords": [
+    "HTML5",
+    "AngularJS",
+    "Video Player"
+  ],
+  "author": "Tahmid Tanzim <tahmid.tanzim@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tahmid-tanzim/video-playback/issues"
+  },
+  "homepage": "https://github.com/tahmid-tanzim/video-playback#readme",
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-preset-es2015": "^6.3.13",
+    "express": "^4.13.3"
+  }
+}

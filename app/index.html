@@ -5,32 +5,28 @@
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Video Player</title>
-
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootswatch-darkly.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-controller="VideoController">
-
     <div id="fullPlayer" class="unselectable ng-cloak">
         <div class="embed-responsive embed-responsive-16by9">
-            <video id="VideoElement" width="100%" height="100%" src="{{videoSource}}"></video>
+            <video id="VideoElement" width="100%" height="100%" ng-src="{{videoSource}}"></video>
             <div id="bigPlayButton" class="well"><span class="glyphicon glyphicon-play"></span></div>
             <div id="videoTitle">{{titleDisplay}}</div>
         </div>
-
         <div id="playerToolBar">
             <a id="playBtn" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></a>
             <a id="muteBtn" class="btn btn-default"><span class="glyphicon glyphicon-volume-up"></span></a>
             <span id="videoTime">00:00:00 / 00:00:00</span>
         </div>
     </div>
-
     <!-- JavaScript -->
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
-    <script src="video-app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
