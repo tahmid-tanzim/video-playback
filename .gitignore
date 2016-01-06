@@ -8,3 +8,5 @@ node_modules
 
 # IDE Configuration
 .idea
+
+app/video/demo.mp4
