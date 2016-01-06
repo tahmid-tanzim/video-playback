@@ -1,33 +1,35 @@
 var videoApp = angular.module('videoApp', []);
 
 videoApp.controller('VideoController', ['$scope', function($scope) {
-    $scope.videoDisplay = document.getElementById("videoElement");
-    $scope.videoSource = 'video/StarlightScamper.mp4';
-    $scope.titleDisplay = 'Starlight Scamper';
-    $scope.videoDescription = 'Starlight Scamper: A video player build with AngularJS';
-    $scope.videoPlaying = false;
+    $scope.video = {
+        title: 'Starlight Scamper',
+        description: 'Starlight Scamper: A video player build with AngularJS',
+        element: document.getElementById("videoElement"),
+        source: 'video/demo.mp4',
+        isPlaying: false
+    };
 
     $scope.togglePlay = function() {
-        if($scope.videoDisplay.paused){
-            $scope.videoDisplay.play();
-            $scope.videoPlaying = true;
+        if($scope.video.element.paused){
+            $scope.video.element.play();
+            $scope.video.isPlaying = true;
             $('#playBtn').children("span").toggleClass("glyphicon-play", false);
             $('#playBtn').children("span").toggleClass("glyphicon-pause", true);
         }else{
-            $scope.videoDisplay.pause();
-            $scope.videoPlaying = false;
+            $scope.video.element.pause();
+            $scope.video.isPlaying = false;
             $('#playBtn').children("span").toggleClass("glyphicon-play", true);
             $('#playBtn').children("span").toggleClass("glyphicon-pause", false);
         }
     };
 
     $scope.toggleMute = function() {
-        if($scope.videoDisplay.volume == 0.0){
-            $scope.videoDisplay.volume = 1.0;
+        if($scope.video.element.volume == 0.0){
+            $scope.video.element.volume = 1.0;
             $('#muteBtn').children("span").toggleClass("glyphicon-volume-up", true);
             $('#muteBtn').children("span").toggleClass("glyphicon-volume-off", false);
         }else{
-            $scope.videoDisplay.volume = 0.0;
+            $scope.video.element.volume = 0.0;
             $('#muteBtn').children("span").toggleClass("glyphicon-volume-up", false);
             $('#muteBtn').children("span").toggleClass("glyphicon-volume-off", true);
         }

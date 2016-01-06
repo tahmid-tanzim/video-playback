@@ -16,16 +16,16 @@
             <video id="videoElement"
                    width="100%"
                    height="100%"
-                   ng-src="{{videoSource}}"
+                   ng-src="{{video.source}}"
                    ng-click="togglePlay()"></video>
             <div id="bigPlayButton"
                  class="well"
                  ng-click="togglePlay()"
-                 ng-hide="videoPlaying">
+                 ng-hide="video.isPlaying">
                 <span class="glyphicon glyphicon-play"></span>
             </div>
             <div id="videoTitle"
-                 ng-hide="videoPlaying">{{titleDisplay}}</div>
+                 ng-hide="video.isPlaying">{{video.title}}</div>
         </div>
         <div id="playerToolBar">
             <a id="playBtn"
