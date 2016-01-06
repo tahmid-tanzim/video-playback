@@ -9,6 +9,28 @@ videoApp.controller('VideoController', ['$scope', function($scope) {
         isPlaying: false
     };
 
+    $scope.initPlayer = function() {
+        $scope.video.currentTime = 0;
+        $scope.video.totalTime = 0;
+        $scope.video.element.addEventListener('timeupdate', $scope.updateTime, true);
+        $scope.video.element.addEventListener('loadedmetadata', $scope.updateData, true);
+    };
+
+    $scope.updateTime = function(e) {
+        $scope.video.currentTime = e.target.currentTime;
+        $scope.updateLayout();
+    };
+
+    $scope.updateData = function(e) {
+        $scope.video.totalTime = e.target.duration;
+    };
+
+    $scope.updateLayout = function() {
+        if(!$scope.$$phase) {
+            $scope.$apply();
+        }
+    };
+
     $scope.togglePlay = function() {
         if($scope.video.element.paused){
             $scope.video.element.play();
@@ -34,5 +56,7 @@ videoApp.controller('VideoController', ['$scope', function($scope) {
             $('#muteBtn').children("span").toggleClass("glyphicon-volume-off", true);
         }
     };
+
+    $scope.initPlayer();
 
 }]);

@@ -38,7 +38,7 @@
                ng-click="toggleMute()">
                 <span class="glyphicon glyphicon-volume-up"></span>
             </a>
-            <span id="videoTime">00:00:00 / 00:00:00</span>
+            <span id="videoTime">{{video.currentTime}} / {{video.totalTime}}</span>
         </div>
     </div>
     <!-- JavaScript -->
