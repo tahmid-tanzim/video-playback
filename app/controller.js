@@ -8,7 +8,7 @@ videoApp.controller('VideoController', ['$scope', '$interval', function($scope, 
         title: 'Starlight Scamper',
         description: 'Starlight Scamper: A video player build with AngularJS',
         element: document.getElementById("videoElement"),
-        source: 'video/demo.mp4',
+        source: 'video/StarlightScamper.mp4',
         isPlaying: false
     };
 
@@ -29,13 +29,15 @@ videoApp.controller('VideoController', ['$scope', '$interval', function($scope, 
     }, 100);
 
     $scope.updateTime = function(e) {
-        $scope.video.currentTime = e.target.currentTime;
-        if($scope.video.currentTime == $scope.video.totalTime) {
-            $scope.video.element.pause();
-            $scope.video.isPlaying = false;
-            $scope.video.currentTime = 0;
-            $('#playBtn').children('span').toggleClass('glyphicon-play', true);
-            $('#playBtn').children('span').toggleClass('glyphicon-pause', false);
+        if(!$scope.video.element.seeking) {
+            $scope.video.currentTime = e.target.currentTime;
+            if($scope.video.currentTime == $scope.video.totalTime) {
+                $scope.video.element.pause();
+                $scope.video.isPlaying = false;
+                $scope.video.currentTime = 0;
+                $('#playBtn').children('span').toggleClass('glyphicon-play', true);
+                $('#playBtn').children('span').toggleClass('glyphicon-pause', false);
+            }
         }
     };
 
@@ -52,6 +54,13 @@ videoApp.controller('VideoController', ['$scope', '$interval', function($scope, 
         if(!$scope.$$phase) {
             $scope.$apply();
         }
+    };
+
+    $scope.videoSeek = function($event) {
+        var progressWidth = document.getElementById('progressMeterFull').offsetWidth;
+        var totalTime = $scope.video.element.duration;
+        var seconds = Math.round($event.pageX / progressWidth * totalTime);
+        $scope.video.element.currentTime = seconds;
     };
 
     $scope.togglePlay = function() {
