@@ -8,6 +8,7 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootswatch-darkly.min.css">
+    <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-controller="VideoController">
@@ -62,13 +63,13 @@
     <div id="progressMeterFull"
          ng-click="videoSeek($event)">
         <div id="progressMeter"
-             style="width:{{scrubLeft+7}}px;"
+             style="width:{{scrubLeft+7}}px"
              ng-click="videoSeek($event)"></div>
     </div>
     <!-- #progressMeterFull -->
     <div id="thumbScrubber"
          style="top:{{scrubTop}}px;left:{{scrubLeft-1}}px;"
-         ng-mousedown="dragStart($event)"></div>
+         ng-mousedown="dragStart()"></div>
     <div id="playerToolBar">
         <a id="playBtn"
            class="btn btn-default"
@@ -101,6 +102,7 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/angular.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
 <script src="app.js"></script>
 <script src="controller.js"></script>
 <script src="filter.js"></script>

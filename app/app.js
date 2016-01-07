@@ -1,1 +1,1 @@
-var videoApp = angular.module('videoApp', []);
+var videoApp = angular.module('videoApp', ['ngAnimate']);

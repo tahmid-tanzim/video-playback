@@ -16,7 +16,7 @@ videoApp.controller('VideoController', ['$scope', '$interval', '$http', function
         title: 'Starlight Scamper',
         description: 'Starlight Scamper: A video player build with AngularJS',
         element: document.getElementById('videoElement'),
-        source: 'video/StarlightScamper.mp4',
+        source: 'video/starlightscamper.mp4',
         isPlaying: false
     };
 
@@ -36,7 +36,6 @@ videoApp.controller('VideoController', ['$scope', '$interval', '$http', function
             $scope.scrubLeft = (currentTime / totalTime * progressLeftWidth) - 7;
         } else {
             $scope.scrubLeft = document.getElementById('thumbScrubber').offsetLeft;
-
         }
         $scope.updateLayout();
     }, 100);
@@ -77,11 +76,11 @@ videoApp.controller('VideoController', ['$scope', '$interval', '$http', function
         }
     };
 
-    $scope.dragStart = function($event) {
+    $scope.dragStart = function() {
         $scope.isDragging = true;
     };
 
-    $scope.dragStop = function() {
+    $scope.dragStop = function($event) {
         if($scope.isDragging) {
             $scope.videoSeek($event);
             $scope.isDragging = false;

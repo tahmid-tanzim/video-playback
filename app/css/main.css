@@ -124,3 +124,15 @@ html, body {
 #videoOptions li {
     cursor: pointer;
 }
+
+/* ANIMATIONS */
+.ng-hide-remove {
+    -webkit-animation: fadeIn 0.50s;
+    animation: fadeIn 0.50s;
+}
+
+.ng-hide-add {
+    -webkit-animation: fadeOut 0.75s;
+    animation: fadeOut 0.75s;
+    display: block !important;
+}
