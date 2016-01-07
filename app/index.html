@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-controller="VideoController">
-<div id="fullPlayer" class="unselectable ng-cloak">
+<div id="fullPlayer"
+     class="unselectable ng-cloak"
+     ng-mousemove="mouseMoving($event)"
+     ng-mouseup="dragStop($event)">
     <div class="embed-responsive embed-responsive-16by9">
         <video id="videoElement"
                width="100%"
@@ -32,10 +35,13 @@
     <div id="progressMeterFull"
          ng-click="videoSeek($event)">
         <div id="progressMeter"
-             style="width:{{scrubLeft+7}}px"
+             style="width:{{scrubLeft+7}}px;"
              ng-click="videoSeek($event)"></div>
     </div>
     <!-- #progressMeterFull -->
+    <div id="thumbScrubber"
+         style="top:{{scrubTop}}px;left:{{scrubLeft-1}}px;"
+         ng-mousedown="dragStart($event)"></div>
     <div id="playerToolBar">
         <a id="playBtn"
            class="btn btn-default"

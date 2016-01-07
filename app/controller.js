@@ -3,6 +3,7 @@ videoApp.controller('VideoController', ['$scope', '$interval', function($scope, 
     $scope.scrubLeft = -1000;
     $scope.vidHeightCenter = -1000;
     $scope.vidWidthCenter = -1000;
+    $scope.isDragging = false;
 
     $scope.video = {
         title: 'Starlight Scamper',
@@ -20,11 +21,16 @@ videoApp.controller('VideoController', ['$scope', '$interval', function($scope, 
     };
 
     $interval(function() {
-        var currentTime = $scope.video.element.currentTime;
-        var totalTime = $scope.video.element.duration;
-        //var viewedPercent = currentTime / totalTime * 100;
-        var progressLeftWidth = document.getElementById('progressMeterFull').offsetLeft + document.getElementById('progressMeterFull').offsetWidth;
-        $scope.scrubLeft = (currentTime / totalTime * progressLeftWidth) - 7;
+        if(!$scope.isDragging) {
+            var currentTime = $scope.video.element.currentTime;
+            var totalTime = $scope.video.element.duration;
+            //var viewedPercent = currentTime / totalTime * 100;
+            var progressLeftWidth = document.getElementById('progressMeterFull').offsetLeft + document.getElementById('progressMeterFull').offsetWidth;
+            $scope.scrubLeft = (currentTime / totalTime * progressLeftWidth) - 7;
+        } else {
+            $scope.scrubLeft = document.getElementById('thumbScrubber').offsetLeft;
+
+        }
         $scope.updateLayout();
     }, 100);
 
@@ -53,6 +59,25 @@ videoApp.controller('VideoController', ['$scope', '$interval', function($scope, 
 
         if(!$scope.$$phase) {
             $scope.$apply();
+        }
+    };
+
+    $scope.mouseMoving = function($event) {
+        if($scope.isDragging) {
+            $('#thumbScrubber').offset({
+                left: $event.pageX
+            });
+        }
+    };
+
+    $scope.dragStart = function($event) {
+        $scope.isDragging = true;
+    };
+
+    $scope.dragStop = function() {
+        if($scope.isDragging) {
+            $scope.videoSeek($event);
+            $scope.isDragging = false;
         }
     };
 
