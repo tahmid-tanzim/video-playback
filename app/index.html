@@ -12,30 +12,30 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-controller="VideoController">
-<div id="fullPlayer"
+<div id="full-player"
      class="unselectable ng-cloak"
      ng-mousemove="mouseMoving($event)"
      ng-mouseup="dragStop($event)">
     <div class="embed-responsive embed-responsive-16by9">
-        <video id="videoElement"
+        <video id="video-element"
                width="100%"
                height="100%"
                ng-src="{{video.source}}"
                ng-click="togglePlay()"></video>
-        <!-- video#videoElement -->
-        <div id="bigPlayButton"
+        <!-- video#video-element -->
+        <div id="btn-big-play"
              class="well"
              ng-click="togglePlay()"
              ng-hide="video.isPlaying"
              style="margin-top:{{vidHeightCenter}}px;margin-left:{{vidWidthCenter}}px;">
             <span class="glyphicon glyphicon-play"></span>
         </div>
-        <!-- #bigPlayButton -->
-        <div id="videoTitle"
+        <!-- #btn-big-play -->
+        <div id="video-title"
              ng-hide="video.isPlaying">{{video.title}}
         </div>
-        <!-- #videoTitle -->
-        <div id="videoOptions"
+        <!-- #video-title -->
+        <div id="video-options"
              class="panel panel-default"
              ng-show="showOptions">
             <div class="panel-heading">
@@ -58,46 +58,46 @@
                 </div>
             </div>
         </div>
-        <!-- #videoOptions -->
+        <!-- #video-options -->
     </div>
-    <div id="progressMeterFull"
+    <div id="progress-meter-full"
          ng-click="videoSeek($event)">
-        <div id="progressMeter"
+        <div id="progress-meter"
              style="width:{{scrubLeft+7}}px"
              ng-click="videoSeek($event)"></div>
     </div>
-    <!-- #progressMeterFull -->
-    <div id="thumbScrubber"
+    <!-- #progress-meter-full -->
+    <div id="thumb-scrubber"
          style="top:{{scrubTop}}px;left:{{scrubLeft-1}}px;"
          ng-mousedown="dragStart()"></div>
-    <div id="playerToolBar">
-        <a id="playBtn"
+    <div id="player-tool-bar">
+        <a id="btn-play"
            class="btn btn-default"
            ng-click="togglePlay()">
             <span class="glyphicon glyphicon-play"></span>
         </a>
-        <a id="muteBtn"
+        <a id="btn-mute"
            class="btn btn-default"
            ng-click="toggleMute()">
             <span class="glyphicon glyphicon-volume-up"></span>
         </a>
-        <span id="videoTime">{{video.currentTime | time}} / {{video.totalTime | time}}</span>
-        <a id="fullscreenBtn"
+        <span id="video-time">{{video.currentTime | time}} / {{video.totalTime | time}}</span>
+        <a id="btn-fullscreen"
            class="btn btn-default pull-right"
            ng-click="toggleFullScreen()">
             <span class="glyphicon glyphicon-fullscreen"></span>
         </a>
-        <!-- #fullscreenBtn -->
-        <a id="detailsBtn"
+        <!-- #btn-fullscreen -->
+        <a id="btn-details"
            class="btn btn-default pull-right"
            ng-click="toggleDetails()">
             <span class="glyphicon glyphicon-option-horizontal"></span>
         </a>
-        <!-- #detailsBtn -->
+        <!-- #btn-details -->
     </div>
-    <!-- #playerToolBar -->
+    <!-- #player-tool-bar -->
 </div>
-<!-- #fullPlayer -->
+<!-- #full-player -->
 <!-- JavaScript -->
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

@@ -4,6 +4,5 @@ videoApp.filter('time', function() {
         var mm = Math.floor(seconds / 60) % 60;
         var ss = Math.floor(seconds) % 60;
         return hh + ':' + (mm < 10 ? '0' : '') + mm + ':' + (ss < 10 ? '0' : '') + ss;
-
     };
 });
