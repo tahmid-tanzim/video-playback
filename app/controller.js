@@ -1,10 +1,16 @@
-videoApp.controller('VideoController', ['$scope', '$interval', function($scope, $interval) {
+videoApp.controller('VideoController', ['$scope', '$interval', '$http', function($scope, $interval, $http) {
     $scope.scrubTop = -1000;
     $scope.scrubLeft = -1000;
     $scope.vidHeightCenter = -1000;
     $scope.vidWidthCenter = -1000;
     $scope.isDragging = false;
     $scope.showOptions = false;
+    $scope.playlist;
+
+    $http.get('data/playlist.json').success(function(data) {
+        console.log(data);
+        $scope.playlist = data;
+    });
 
     $scope.video = {
         title: 'Starlight Scamper',
@@ -87,6 +93,19 @@ videoApp.controller('VideoController', ['$scope', '$interval', function($scope, 
         var totalTime = $scope.video.element.duration;
         var seconds = Math.round($event.pageX / progressWidth * totalTime);
         $scope.video.element.currentTime = seconds;
+    };
+
+    $scope.videoSelected = function(index) {
+        var i = index || 0;
+        $scope.video.title = $scope.playlist[i].title;
+        $scope.video.description = $scope.playlist[i].description;
+        $scope.video.source = $scope.playlist[i].source;
+
+        $scope.video.element.load($scope.video.source);
+        $scope.video.isPlaying = false;
+        $('#playBtn').children('span').toggleClass('glyphicon-play', true);
+        $('#playBtn').children('span').toggleClass('glyphicon-pause', false);
+        $scope.showOptions = false;
     };
 
     $scope.togglePlay = function() {
