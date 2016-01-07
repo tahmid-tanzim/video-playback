@@ -54,6 +54,11 @@
             <span class="glyphicon glyphicon-volume-up"></span>
         </a>
         <span id="videoTime">{{video.currentTime | time}} / {{video.totalTime | time}}</span>
+        <a id="fullscreenBtn"
+           class="btn btn-default pull-right"
+           ng-click="toggleFullScreen()">
+            <span class="glyphicon glyphicon-fullscreen"></span>
+        </a>
     </div>
     <!-- #playerToolBar -->
 </div>
