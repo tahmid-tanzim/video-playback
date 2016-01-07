@@ -4,11 +4,12 @@ videoApp.controller('VideoController', ['$scope', '$interval', function($scope, 
     $scope.vidHeightCenter = -1000;
     $scope.vidWidthCenter = -1000;
     $scope.isDragging = false;
+    $scope.showOptions = false;
 
     $scope.video = {
         title: 'Starlight Scamper',
         description: 'Starlight Scamper: A video player build with AngularJS',
-        element: document.getElementById("videoElement"),
+        element: document.getElementById('videoElement'),
         source: 'video/StarlightScamper.mp4',
         isPlaying: false
     };
@@ -128,6 +129,10 @@ videoApp.controller('VideoController', ['$scope', '$interval', function($scope, 
             /* Specific to IE */
             element.msRequestFullscreen();
         }
+    };
+
+    $scope.toggleDetails = function() {
+        $scope.showOptions = !$scope.showOptions;
     };
 
     $scope.initPlayer();

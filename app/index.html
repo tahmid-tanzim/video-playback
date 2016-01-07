@@ -21,6 +21,7 @@
                height="100%"
                ng-src="{{video.source}}"
                ng-click="togglePlay()"></video>
+        <!-- video#videoElement -->
         <div id="bigPlayButton"
              class="well"
              ng-click="togglePlay()"
@@ -28,9 +29,27 @@
              style="margin-top:{{vidHeightCenter}}px;margin-left:{{vidWidthCenter}}px;">
             <span class="glyphicon glyphicon-play"></span>
         </div>
+        <!-- #bigPlayButton -->
         <div id="videoTitle"
              ng-hide="video.isPlaying">{{video.title}}
         </div>
+        <!-- #videoTitle -->
+        <div id="videoOptions"
+             class="panel panel-default"
+             ng-show="showOptions">
+            <div class="panel-heading">
+                <h1 class="panel-title">{{video.title}}</h1>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-6">
+                    <h2>Video Details:</h2>
+                    <p>{{video.description}}</p>
+                    <p><em>Duration: {{video.totalTime | time}}</em></p>
+                </div>
+                <div class="col-xs-6"></div>
+            </div>
+        </div>
+        <!-- #videoOptions -->
     </div>
     <div id="progressMeterFull"
          ng-click="videoSeek($event)">
@@ -59,6 +78,13 @@
            ng-click="toggleFullScreen()">
             <span class="glyphicon glyphicon-fullscreen"></span>
         </a>
+        <!-- #fullscreenBtn -->
+        <a id="detailsBtn"
+           class="btn btn-default pull-right"
+           ng-click="toggleDetails()">
+            <span class="glyphicon glyphicon-option-horizontal"></span>
+        </a>
+        <!-- #detailsBtn -->
     </div>
     <!-- #playerToolBar -->
 </div>
